@@ -1,5 +1,5 @@
-/* Created and coded by Abhilash Narayan */
-/* Quiz source: w3schools.com */
+// Original Created And Coder Abhilash Narayan */
+//Original Quiz source: w3schools.com */
 var quiz = {
 	"JS": [{
 		"id": 1,
@@ -431,11 +431,13 @@ $('#previous').click(function (e) {
 });
 
 
+//Sets Number Of Questions Pulled From The Bank
+var questionLimit = 10
 
-//Question Randomizer:
+//Question Randomizer (Stores In testGenOutput):
 function randomizeQuestions(testbank) {
 	var selectedQuestions = [];
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < questionLimit; i++) {
 		var item = testbank[Math.floor(Math.random() * testbank.length)];
 		while (selectedQuestions.includes(item)) {
 			item = testbank[Math.floor(Math.random() * testbank.length)];
@@ -444,5 +446,10 @@ function randomizeQuestions(testbank) {
 	}
 	return selectedQuestions;
 }
-//Puts Random Question Array Into The "testGenOutput" Variable
 var testGenOutput = randomizeQuestions(quiz.JS);
+
+//Exports The Results:
+function theExporter() {
+//Score Variable : scr
+//In Progress
+}
