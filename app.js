@@ -429,3 +429,20 @@ $('#previous').click(function (e) {
 	}
 	jsq.changeQuestion(-1);
 });
+
+
+
+//Question Randomizer:
+function randomizeQuestions(testbank) {
+	var selectedQuestions = [];
+	for (let i = 0; i < 10; i++) {
+		var item = testbank[Math.floor(Math.random() * testbank.length)];
+		while (selectedQuestions.includes(item)) {
+			item = testbank[Math.floor(Math.random() * testbank.length)];
+		}
+		selectedQuestions.push(item);
+	}
+	return selectedQuestions;
+}
+//Puts Random Question Array Into The "testGenOutput" Variable
+var testGenOutput = randomizeQuestions(quiz.JS);
