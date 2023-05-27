@@ -1,0 +1,80 @@
+[
+    [
+        {
+            "question": "EASY - A Fake Question",
+            "option1": "Fake Option 1'",
+            "option2": "Fake Option 2",
+            "option3": "Fake Option 3",
+            "option4": "Fake Option 4"
+
+        },
+        {
+            "question": "EASY - Another Fake Question",
+            "option1": "Another Fake Option 1'",
+            "option2": "Another Fake Option 2",
+            "option3": "Another Fake Option 3",
+            "option4": "Another Fake Option 4"
+
+        },
+        {
+            "question": "EASY - A Third Fake Question",
+            "option1": "A Third Fake Option 1'",
+            "option2": "A Third Fake Option 2",
+            "option3": "A Third Fake Option 3",
+            "option4": "A Third Fake Option 4"
+
+        }
+    ]
+    [
+        {
+            "question": "MEDIUM - A Fake Question",
+            "option1": "Fake Option 1'",
+            "option2": "Fake Option 2",
+            "option3": "Fake Option 3",
+            "option4": "Fake Option 4"
+
+        }
+        {
+            "question": "MEDIUM - Another Fake Question",
+            "option1": "Another Fake Option 1'",
+            "option2": "Another Fake Option 2",
+            "option3": "Another Fake Option 3",
+            "option4": "Another Fake Option 4"
+
+        }
+        {
+            "question": "MEDIUM - A Third Fake Question",
+            "option1": "A Third Fake Option 1'",
+            "option2": "A Third Fake Option 2",
+            "option3": "A Third Fake Option 3",
+            "option4": "A Third Fake Option 4"
+
+        }
+    ]
+    [
+        {
+            "question": "HARD - A Fake Question",
+            "option1": "Fake Option 1'",
+            "option2": "Fake Option 2",
+            "option3": "Fake Option 3",
+            "option4": "Fake Option 4"
+
+        },
+        {
+            "question": "HARD - Another Fake Question",
+            "option1": "Another Fake Option 1'",
+            "option2": "Another Fake Option 2",
+            "option3": "Another Fake Option 3",
+            "option4": "Another Fake Option 4"
+
+        },
+        {
+            "question": "HARD - A Third Fake Question",
+            "option1": "A Third Fake Option 1'",
+            "option2": "A Third Fake Option 2",
+            "option3": "A Third Fake Option 3",
+            "option4": "A Third Fake Option 4"
+
+        }
+    ]
+]
