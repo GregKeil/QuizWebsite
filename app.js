@@ -432,9 +432,9 @@ $('#previous').click(function (e) {
 
 
 //Sets Number Of Questions Pulled From The Bank
-var questionLimit = 10
+var questionLimit = 10;
 
-//Question Randomizer (Stores In testGenOutput):
+//Question Randomizer (Stores In GenOutput):
 function randomizeQuestions(testbank) {
 	var selectedQuestions = [];
 	for (let i = 0; i < questionLimit; i++) {
@@ -446,10 +446,21 @@ function randomizeQuestions(testbank) {
 	}
 	return selectedQuestions;
 }
-var testGenOutput = randomizeQuestions(quiz.JS);
+var genOutput = randomizeQuestions(quiz.JS);
+
+
+//THESE ARE TEMP VARIABLES, DELETE THEM LATER:
+var userName = "LCpl Keil.Gregory";
+var testLevel = "Advanced";
 
 //Exports The Results:
 function theExporter() {
-//Score Variable : scr
-//In Progress
+	var resultOutput = [];
+	resultOutput.push(userName);
+	resultOutput.push(testLevel);
+	//resultOutput.push(FINALSCOREVARIABLE);
+	//const fs = require('fs');
+	//fs.appendFileSync(data.csv, resultOutput);
 }
+
+//theExporter();
