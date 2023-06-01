@@ -321,28 +321,33 @@ var quiz = {
 		"status": ""
 	}]
 }
+
+//Creates Initial Variables For Question Settings
+var questionLimit = 10;
+var genOutput = randomizeQuestions(quiz.JS);
+
 var quizApp = function () {
 	this.score = 0;
 	this.qno = 1;
 	this.currentque = 0;
-	var totalque = quiz.JS.length;
+	var totalque = genOutput.Q.length;
 	this.displayQuiz = function (cque) {
 		this.currentque = cque;
 		if (this.currentque < totalque) {
 			$("#tque").html(totalque);
 			$("#previous").attr("disabled", false);
 			$("#next").attr("disabled", false);
-			$("#qid").html(quiz.JS[this.currentque].id + '.');
-			$("#question").html(quiz.JS[this.currentque].question);
+			$("#qid").html(genOutput.Q[this.currentque].id + '.');
+			$("#question").html(genOutput.Q[this.currentque].question);
 			$("#question-options").html("");
 			
-			for (var key in quiz.JS[this.currentque].options[0]) {
-				if (quiz.JS[this.currentque].options[0].hasOwnProperty(key)) {
+			for (var key in genOutput.Q[this.currentque].options[0]) {
+				if (genOutput.Q[this.currentque].options[0].hasOwnProperty(key)) {
 					$("#question-options").append(
 						"<div class='form-check option-block'>" +
 						"<label class='form-check-label'>" +
-						"<input type='radio' class='form-check-input' name='option' id='q" + key + "' value='" + quiz.JS[this.currentque].options[0][key] + "'><span id='optionval'>" +
-						quiz.JS[this.currentque].options[0][key] +
+						"<input type='radio' class='form-check-input' name='option' id='q" + key + "' value='" + genOutput.Q[this.currentque].options[0][key] + "'><span id='optionval'>" +
+						genOutput.Q[this.currentque].options[0][key] +
 						"</span></label>"
 					);
 				}
@@ -354,7 +359,7 @@ var quizApp = function () {
 		if (this.currentque >= totalque) {
 			$('#next').attr('disabled', true);
 			for (var i = 0; i < totalque; i++) {
-			this.score = this.score + quiz.JS[i].score;
+				this.score = this.score + genOutput.Q[i].score;
 		}
 		return this.showResult(this.score);
 	}
@@ -365,15 +370,15 @@ this.showResult = function (scr) {
 	$("#result").html("<h1 class='res-header'>Total Score: &nbsp;" + scr + '/' + totalque + "</h1>");
 	for (var j = 0; j < totalque; j++) {
 		var res;
-		if (quiz.JS[j].score == 0) {
-			res = '<span class="wrong">' + quiz.JS[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
+		if (genOutput.Q[j].score == 0) {
+			res = '<span class="wrong">' + genOutput.Q[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
 		} 
 		else {
-			res = '<span class="correct">' + quiz.JS[j].score + '</span><i class="fa fa-check c-correct"></i>';
+			res = '<span class="correct">' + genOutput.Q[j].score + '</span><i class="fa fa-check c-correct"></i>';
 		}
 		$("#result").append(
-			'<div class="result-question"><span>Q ' + quiz.JS[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
-			'<div><b>Correct answer:</b> &nbsp;' + quiz.JS[j].answer + '</div>' +
+			'<div class="result-question"><span>Q ' + genOutput.Q[j].id + '</span> &nbsp;' + genOutput.Q[j].question + '</div>' +
+			'<div><b>Correct answer:</b> &nbsp;' + genOutput.Q[j].answer + '</div>' +
 			'<div class="last-row"><b>Score:</b> &nbsp;' + res +
 			'</div>'
 		);
@@ -381,18 +386,18 @@ this.showResult = function (scr) {
 }
 
 this.checkAnswer = function (option) {
-	var answer = quiz.JS[this.currentque].answer;
+	var answer = genOutput.Q[this.currentque].answer;
 	option = option.replace(/</g, "&lt;") //for <
 	option = option.replace(/>/g, "&gt;") //for >
 	option = option.replace(/"/g, "&quot;")
-	if (option == quiz.JS[this.currentque].answer) {
-		if (quiz.JS[this.currentque].score == "") {
-			quiz.JS[this.currentque].score = 1;
-			quiz.JS[this.currentque].status = "correct";
+	if (option == genOutput.Q[this.currentque].answer) {
+		if (genOutput.Q[this.currentque].score == "") {
+			genOutput.Q[this.currentque].score = 1;
+			genOutput.Q[this.currentque].status = "correct";
 		}
 	} 
 	else {
-		quiz.JS[this.currentque].status = "wrong";
+		genOutput.Q[this.currentque].status = "wrong";
 	}
 }
 
@@ -430,37 +435,19 @@ $('#previous').click(function (e) {
 	jsq.changeQuestion(-1);
 });
 
-
-//Sets Number Of Questions Pulled From The Bank
-var questionLimit = 10;
-
 //Question Randomizer (Stores In GenOutput):
 function randomizeQuestions(testbank) {
-	var selectedQuestions = [];
+	var selectedQuestions = {
+		"Q": []
+	};
 	for (let i = 0; i < questionLimit; i++) {
 		var item = testbank[Math.floor(Math.random() * testbank.length)];
-		while (selectedQuestions.includes(item)) {
+		while (selectedQuestions.Q.includes(item)) {
 			item = testbank[Math.floor(Math.random() * testbank.length)];
 		}
-		selectedQuestions.push(item);
+		item['id'] = i + 1;
+		selectedQuestions.Q.push(item);
 	}
 	return selectedQuestions;
 }
-var genOutput = randomizeQuestions(quiz.JS);
 
-
-//THESE ARE TEMP VARIABLES, DELETE THEM LATER:
-var userName = "LCpl Keil.Gregory";
-var testLevel = "Advanced";
-
-//Exports The Results:
-function theExporter() {
-	var resultOutput = [];
-	resultOutput.push(userName);
-	resultOutput.push(testLevel);
-	//resultOutput.push(FINALSCOREVARIABLE);
-	//const fs = require('fs');
-	//fs.appendFileSync(data.csv, resultOutput);
-}
-
-//theExporter();
